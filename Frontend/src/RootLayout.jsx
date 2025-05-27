@@ -1,8 +1,15 @@
 import React from 'react'
+import { Outlet } from '@tanstack/react-router'
+import Navbar from './components/NavBar'
 
 const RootLayout = () => {
   return (
-    <div className='bg-pink-500/40 h-screen w-screen'>App</div>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+    </div>
   )
 }
 
