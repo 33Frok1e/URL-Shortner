@@ -5,9 +5,9 @@ import cors from "cors"
 import connectDB from "./src/config/mongoo.config.js"
 import short_url from './src/routes/short_url.route.js'
 import { errorHandler } from "./src/utils/errorHandler.js"
-import { redirectFromShortUrl } from "./src/controllers/short_url.controller.js"
-import user_routes from "./src/routes/user.route.js"
-import auth_routes from "./src/routes/auth.route.js"
+import { redirectFromShortUrl } from "./src/controller/short_url.controller.js"
+import user_routes from "./src/routes/user.routes.js"
+import auth_routes from "./src/routes/auth.routes.js"
 import { attachUser } from "./src/utils/attachUser.js";
 
 dotenv.config('./.env')

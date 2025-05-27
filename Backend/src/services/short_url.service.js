@@ -2,6 +2,9 @@ import { generateNanoId } from "../utils/helper.js"
 import { getCustomShortUrl, saveShortUrl } from "../dao/short_url.dao.js"
 
 export const createShortUrlWithoutUser = async (url) => {
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;
+    }
     const shortUrl = generateNanoId(7)
     if(!shortUrl) throw new Error("Short URL not generated")
     await saveShortUrl(shortUrl, url)

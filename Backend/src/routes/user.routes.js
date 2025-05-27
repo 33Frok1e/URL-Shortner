@@ -4,6 +4,6 @@ import { authMiddleware } from "../middleware/auth.middleware.js"
 
 const router = express.Router()
 
-router.post("/urls", authMiddleware, getAllUserUrls)  // Here Post should be changed to Get
+router.get("/urls", authMiddleware, getAllUserUrls)
 
 export default router

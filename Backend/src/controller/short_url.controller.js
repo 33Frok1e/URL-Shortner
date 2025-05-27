@@ -17,8 +17,18 @@ export const createShortUrl = wrapAsync(async (req,res) => {
 export const redirectFromShortUrl = wrapAsync(async (req,res)=>{
     const {id} = req.params
     const url = await getShortUrl(id)
-    if(!url) throw new Error("Short URL not found")
-    res.redirect(url.full_url)
+    if(!url) {
+        return res.status(404).json({
+            success: false,
+            message: "Short URL not found"
+        });
+    }
+    
+    let redirectUrl = url.full_url;
+    if (!redirectUrl.startsWith('http://') && !redirectUrl.startsWith('https://')) {
+        redirectUrl = 'https://' + redirectUrl;
+    }
+    res.redirect(redirectUrl);
 });
 
 export const createCustomShortUrl = wrapAsync(async (req,res)=>{
