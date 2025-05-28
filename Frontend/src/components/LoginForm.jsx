@@ -23,7 +23,6 @@ const LoginForm = ({ state }) => {
             dispatch(login(data.user))
             navigate({to:"/dashboard"})
             setLoading(false);
-            console.log("signin success")
         } catch (err) {
             setLoading(false);
             setError(err.message || 'Login failed. Please check your credentials.');
